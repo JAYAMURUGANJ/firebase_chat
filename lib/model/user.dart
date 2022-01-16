@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class UserModel {
   String? uid;
   String? createdAt;
@@ -30,5 +28,18 @@ class UserModel {
     data['email'] = email;
     data['updatedAt'] = updatedAt;
     return data;
+  }
+
+  static fromMap(Object? data) {
+    if (data is Map<String, dynamic>) {
+      return UserModel(
+        uid: data['uid'],
+        createdAt: data['createdAt'],
+        lastSignInTime: data['lastSignInTime'],
+        email: data['email'],
+        updatedAt: data['updatedAt'],
+      );
+    }
+    return null;
   }
 }

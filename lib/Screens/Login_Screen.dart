@@ -1,12 +1,12 @@
 // ignore_for_file: avoid_print, file_names
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dashchat/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:dashchat/Component/button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../constants.dart';
-import 'Home_Screen.dart';
+import 'Chat_screen.dart';
 import 'Register_Screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -101,6 +101,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 setState(() {
                                   isloading = true;
                                 });
+                                SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
                                 try {
                                   await _auth
                                       .signInWithEmailAndPassword(
@@ -113,11 +115,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                                 .toIso8601String()
                                           }));
 
+                                  prefs.setString('email', email);
+
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => HomeScreen(
-                                        user: email,
+                                      builder: (context) => ChatScreen(
+                                        email: email,
                                       ),
                                     ),
                                   );
