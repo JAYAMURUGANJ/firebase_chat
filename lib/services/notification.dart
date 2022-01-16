@@ -2,11 +2,7 @@ import 'dart:convert';
 
 import "package:http/http.dart" as http;
 
-var headers = {
-  'Content-Type': 'application/json',
-  'Authorization':
-      'key=AAAAc4fMoWY:APA91bEHAUs3CHgn8la1VogaHbWnCUZJB4Zp6V2mzGTyB778tRkFaS26yzVd_3fqHqbhfjQp3VI87ApH6a8uLXHzMZU_9zFgQqfQ-eF1eKq3QKaalmLjcoDkfwTB93r8_N2fijTCYqXI'
-};
+var headers = {'Content-Type': 'application/json', 'Authorization': ''};
 
 Future sendNotification(String title, String body) async {
   var data = {
