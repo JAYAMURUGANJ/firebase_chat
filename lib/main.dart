@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:dashchat/Screens/Chat_screen.dart';
 import 'package:dashchat/Screens/Login_Screen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -67,15 +69,13 @@ class _LoadingPageState extends State<LoadingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: SizedBox(
-            child: Center(
-          child: CircularProgressIndicator(
-            color: Colors.black,
-          ),
-        )),
-      ),
+    return const Scaffold(
+      body: SizedBox(
+          child: Center(
+        child: CircularProgressIndicator(
+          color: Colors.black,
+        ),
+      )),
     );
   }
 }
